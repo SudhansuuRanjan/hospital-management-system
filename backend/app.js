@@ -7,6 +7,8 @@ import { dbconnection } from "./database/dbconnection.js";
 import messageRouter from "./route/messageRoute.js";
 import userRouter from "./route/userRoute.js";
 import { errorMiddleware } from "./middlewares/errorMiddleware.js";
+import appointmentRouter from "./route/appointmentRoute.js";
+
 
 const app = express();
 config({ path: "./config/config.env" });
@@ -23,11 +25,12 @@ app.use(
     tempFileDir: "/tmp/",
   })
 );
-app.use(cookieParser());
 app.use(express.json());
+app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use("/api/v1/message", messageRouter);
 app.use("/api/v1/user", userRouter);
+app.use("/api/v1/appointment", appointmentRouter);
 dbconnection();
 app.use(errorMiddleware);
 export default app;

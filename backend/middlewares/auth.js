@@ -4,10 +4,14 @@ import jwt from "jsonwebtoken";
 import { User } from "../models/userSchema.js";
 export const isAdminAuthenticated = catchAsyncErrors(async (req, res, next) => {
   const token = req.cookies.adminToken;
+  console.log(req.cookies);
+
   if (!token) {
     return next(new ErrorHandler("Admin not authenticated", 401));
   }
   const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY);
+  console.log(decoded);
+
   req.user = await User.findById(decoded.id);
   if (req.user.role !== "Admin") {
     return next(new ErrorHandler(`${req.user.role} not authorized`, 401));
