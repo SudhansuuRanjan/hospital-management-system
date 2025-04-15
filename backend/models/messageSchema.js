@@ -1,12 +1,12 @@
 import mongoose from "mongoose";
 import validator from "validator";
 const messageSchema = new mongoose.Schema({
-  firstname: {
+  firstName: {
     type: String,
     required: [true, "Please enter your name"],
     minLength: [3, "must be at least 3 characters"],
   },
-  lastname: {
+  lastName: {
     type: String,
     required: [true, "Please enter your name"],
     minLength: [3, "must be at least 3 characters"],

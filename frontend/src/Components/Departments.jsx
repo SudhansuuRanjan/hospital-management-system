@@ -14,7 +14,7 @@ const Departments = () => {
     },
     {
       name: "Cardiology",
-      imageUrl: "/departments/cardio.jpg",
+      imageUrl: "/departments/cardio (1).jpg",
     },
     {
       name: "Neurology",

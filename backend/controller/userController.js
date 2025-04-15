@@ -6,8 +6,8 @@ import cloudinary from "cloudinary";
 
 export const patientRegister = catchAsyncErrors(async (req, res, next) => {
   const {
-    firstname,
-    lastname,
+    firstName,
+    lastName,
     email,
     phone,
     password,
@@ -19,8 +19,8 @@ export const patientRegister = catchAsyncErrors(async (req, res, next) => {
     docAvtar,
   } = req.body;
   if (
-    !firstname ||
-    !lastname ||
+    !firstName ||
+    !lastName ||
     !email ||
     !phone ||
     !password ||
@@ -36,8 +36,8 @@ export const patientRegister = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler("User already exists", 400));
   }
   const user = await User.create({
-    firstname,
-    lastname,
+    firstName,
+    lastName,
     email,
     phone,
     password,
@@ -50,11 +50,11 @@ export const patientRegister = catchAsyncErrors(async (req, res, next) => {
 });
 
 export const login = catchAsyncErrors(async (req, res, next) => {
-  const { email, password, confirmpassword, role } = req.body;
-  if (!email || !password || !confirmpassword || !role) {
+  const { email, password, confirmPassword, role } = req.body;
+  if (!email || !password || !confirmPassword || !role) {
     return next(new ErrorHandler("Please provide all details", 400));
   }
-  if (password !== confirmpassword) {
+  if (password !== confirmPassword) {
     return next(new ErrorHandler("Password does not match", 400));
   }
   const user = await User.findOne({ email }).select("+password");
@@ -117,7 +117,7 @@ export const getAlldoctors = catchAsyncErrors(async (req, res, next) => {
 });
 export const getusersdetails = catchAsyncErrors(async (req, res, next) => {
   const user = req.user;
-  req.status(200).json({
+  res.status(200).json({
     success: true,
     user,
   });
@@ -230,8 +230,8 @@ export const addDoctor = catchAsyncErrors(async (req, res, next) => {
 
   // Extracting form data
   const {
-    firstname,
-    lastname,
+    firstName,
+    lastName,
     email,
     phone,
     password,
@@ -243,8 +243,8 @@ export const addDoctor = catchAsyncErrors(async (req, res, next) => {
 
   // Checking if all required fields are filled
   if (
-    !firstname ||
-    !lastname ||
+    !firstName ||
+    !lastName ||
     !email ||
     !phone ||
     !password ||
@@ -285,8 +285,8 @@ export const addDoctor = catchAsyncErrors(async (req, res, next) => {
 
   // Creating a new doctor in the database
   const doctor = await User.create({
-    firstname,
-    lastname,
+    firstName,
+    lastName,
     email,
     phone,
     password,
@@ -307,4 +307,3 @@ export const addDoctor = catchAsyncErrors(async (req, res, next) => {
     doctor,
   });
 });
-

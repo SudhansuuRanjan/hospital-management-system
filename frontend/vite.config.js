@@ -5,15 +5,15 @@
 // export default defineConfig({
 //   plugins: [react()],
 // })
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
   optimizeDeps: {
-    exclude: ['jsonwebtoken', 'mongoose', 'validator', 'bcrypt'],
+    exclude: ["jsonwebtoken", "mongoose", "validator", "bcrypt"],
   },
-  ssr: {
-    noExternal: ['bcrypt'] // or the ones you use in SSR
-  }
-})
+  // ssr: {
+  //   noExternal: ['bcrypt'] // or the ones you use in SSR
+  // }
+});

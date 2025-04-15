@@ -35,8 +35,8 @@ export const postAppointment = catchAsyncErrors(async (req, res, next) => {
     return next(new ErrorHandler("Please fill in all fields", 400));
   }
   const isConflict = await User.find({
-    firstname: doctor_firstName,
-    lastname: doctor_lastName,
+    firstName: doctor_firstName,
+    lastName: doctor_lastName,
     role: "Doctor",
     doctorDepartment: department,
   });

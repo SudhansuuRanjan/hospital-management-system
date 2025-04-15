@@ -3,10 +3,11 @@ import Hero from "../Components/Hero";
 import Biography from "../Components/Biography";
 import MessageForm from "../Components/MessageForm";
 import Departments from "../Components/Departments";
+
 const Home = () => {
   return (
     <div>
-       <Hero
+      <Hero
         title={
           "Welcome to ZeeCare Medical Institute | Your Trusted Healthcare Provider"
         }
