@@ -9,12 +9,13 @@ import { IoPersonAddSharp } from "react-icons/io5";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Context } from "../main.jsx";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
   const [show, setShow] = useState(false);
 
   const { isAuthenticated, setIsAuthenticated } = useContext(Context);
+  const location = useLocation();
 
   const handleLogout = async () => {
     await axios
@@ -56,7 +57,7 @@ const Sidebar = () => {
   return (
     <>
       <nav
-        style={!isAuthenticated ? { display: "none" } : { display: "flex" }}
+        style={{ display: location.pathname === "/login" ? "none" : "flex" }}
         className={show ? "show sidebar" : "sidebar"}
       >
         <div className="links">

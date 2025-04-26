@@ -11,6 +11,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./Components/Navbar";
 import axios from "axios";
 import { Context } from "./main.jsx";
+import Dashboard from "./Pages/Dashboard";
 
 const App = () => {
   const { isAuthenticated, setIsAuthenticated, setUser } =
@@ -43,6 +44,7 @@ const App = () => {
           <Route path="/appointment" element={<Appointment />} />
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
+          <Route path='/dashboard' element={<Dashboard/>}/>
         </Routes>
         <Footer/>
         <ToastContainer position="top-center"/>
