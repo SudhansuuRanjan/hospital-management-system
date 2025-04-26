@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { Context } from "../main.jsx";
+import { Context } from "../context/AuthContext";
 
 const Navbar = () => {
   const [show, setShow] = useState(false);
@@ -39,6 +39,9 @@ const Navbar = () => {
           <div className="links">
             <Link to={"/"} onClick={() => setShow(!show)}>
               Home
+            </Link>
+            <Link to={"/dashboard"} onClick={() => setShow(!show)}>
+              Dashboard
             </Link>
             <Link to={"/appointment"} onClick={() => setShow(!show)}>
               Appointment
